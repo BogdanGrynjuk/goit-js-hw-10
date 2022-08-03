@@ -27,14 +27,17 @@ function onFormInput(event) {
         countryInfo.innerHTML = '';
         renderCountriesList(countries);
       } else if (countries.length > 10) {        
-        Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');        
+        Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
+        countryList.innerHTML = '';
+        countryInfo.innerHTML = '';        
       }
     })
     .catch((error) => {
       if (error.message === '404') {
         Notiflix.Notify.failure('Oops, there is no country with that name');
         countryList.innerHTML = '';
-        countryInfo.innerHTML = '';        
+        countryInfo.innerHTML = '';
+        return;
       }      
     })
   ; 
